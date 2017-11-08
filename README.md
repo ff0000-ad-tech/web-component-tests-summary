@@ -44,19 +44,19 @@ The likelihood of these combinations is especially true for web-components, sinc
 ## Tested Packages
 [wc-loader](https://github.com/aruntk/wc-loader)
 This loader came the closest. It located all of the dependencies and it repackaged them in a way that worked. The final limitations included:
- - <script> tags loading absolute urls were not parsed out of the DOM-string, thus causing them not to function
- - browser limitations when trying to render <my-component> from a DOM-string
+ - `<script>` tags loading absolute urls were not parsed out of the DOM-string, thus causing them not to function
+ - browser limitations when trying to render `<my-component>` from a DOM-string
 
 [html-loader](https://github.com/webpack-contrib/html-loader)
 This standard webpack loader does a tremendous job of locating every type of dependencies and modularizing it. However, for the output to function as expected, another loader would be needed. I was not able to find one for this purpose.
 
 [polymer-webpack-loader](https://github.com/webpack-contrib/polymer-webpack-loader)
-The repo on this one looks promising, but it does not seem to work at all on nested <link> or <script> tags.
+The repo on this one looks promising, but it does not seem to work at all on nested `<link>` or `<script>` tags.
 
 [polymer-build](https://github.com/Polymer/polymer-build)
 If I were forced to continue on this path, I would next test the Html-splitting capabilities of this project. Theoretically one could add the dependencies it to the webpack graph, and then somehow reconstruct it. Gauging by these other attempts, I'd guess it very difficult and time-consuming.
 
 ## Workarounds
 Web-components can be utilized if they are just CustomElement definitions declared by JS, and:
-their CustomElement definitions have been established before page render, and their markup is hard-coded into the DOM. 
-they are instantiated with `document.createElement` and have been authored to work that way
+- their CustomElement definitions have been established before page render, and their markup is hard-coded into the DOM. 
+- they are instantiated with `document.createElement` and have been authored to work that way
